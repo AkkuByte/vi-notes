@@ -1,0 +1,29 @@
+.app-loading-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #fafafa;
+  font-family: system-ui, sans-serif;
+}
+
+.app-loading-content {
+  text-align: center;
+  color: #6b7280;
+}
+
+.app-loading-spinner {
+  width: 30px;
+  height: 30px;
+  border: 3px solid #e5e7eb;
+  border-top-color: #10b981;
+  border-radius: 50%;
+  margin: 0 auto 16px auto;
+  animation: app-spin 1s linear infinite;
+}
+
+@keyframes app-spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}

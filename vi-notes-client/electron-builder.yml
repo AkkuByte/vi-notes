@@ -1,5 +1,5 @@
-appId: com.electron.app
-productName: vi-notes-client
+appId: com.vinotes.app
+productName: vi notes
 directories:
   buildResources: build
 files:

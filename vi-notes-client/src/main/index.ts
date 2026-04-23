@@ -1,4 +1,4 @@
-import { app, shell, BrowserWindow, ipcMain } from 'electron'
+import { app, BrowserWindow, ipcMain } from 'electron'
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
@@ -22,8 +22,15 @@ function createWindow(): void {
   })
 
  mainWindow.webContents.setWindowOpenHandler((details) => {
+  console.log('Window open attempt for:', details.url);
   // Allow Firebase and Google Auth popups to open inside the desktop app
-  if (details.url.includes('firebaseapp.com') || details.url.includes('accounts.google.com')) {
+  // Firebase often opens "about:blank" initially before redirecting
+  if (
+    details.url === 'about:blank' || 
+    details.url.includes('firebaseapp.com') || 
+    details.url.includes('accounts.google.com') || 
+    details.url.includes('googleapis.com')
+  ) {
     return { action: 'allow' };
   }
   
@@ -48,7 +55,12 @@ app.userAgentFallback = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWe
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
   // Set app user model id for windows
-  electronApp.setAppUserModelId('com.electron')
+  electronApp.setAppUserModelId('com.vinotes.app')
+
+  // Set the macOS app dock icon natively 
+  if (process.platform === 'darwin') {
+    app.dock?.setIcon(icon)
+  }
 
   // Default open or close DevTools by F12 in development
   // and ignore CommandOrControl + R in production.
