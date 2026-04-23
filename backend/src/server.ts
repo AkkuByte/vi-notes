@@ -10,10 +10,10 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-// Connect to local MongoDB
-mongoose.connect('mongodb://localhost:27017/vi-notes')
-  .then(() => console.log('✅ Connected to local MongoDB via Mongoose'))
-  .catch(err => console.error('❌ MongoDB connection error:', err));
+// Connect to MongoDB Atlas
+mongoose.connect('mongodb+srv://akashkumar9973056437_db_user:jZfZRHHwqrSQAbWF@akku001.sgictum.mongodb.net/')
+  .then(() => console.log('✅ Connected to MongoDB Atlas'))
+  .catch(err => console.error('❌ MongoDB Atlas connection error:', err));
 
 // --- RESTful API Routes ---
 

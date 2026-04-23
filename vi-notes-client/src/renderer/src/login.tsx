@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { loginWithGoogle, loginWithEmail, signupWithEmail } from './firebase';
-import electronLogo from './assets/notes-svgrepo-com_1.svg';
+import electronLogo from './assets/flower-svgrepo-com.svg';
 import './login.css';
 
 export default function Login({ onLoginSuccess }: { onLoginSuccess: () => void }) {

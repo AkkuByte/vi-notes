@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "description": "MongoDB backend for vi-notes",
   "main": "src/server.ts",
-  "scripts": {
-    "start": "ts-node src/server.ts",
-    "dev": "nodemon src/server.ts"
-  },
+"scripts": {
+  "build": "tsc",
+  "start": "node dist/server.js",
+  "dev": "ts-node src/server.ts"
+},
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
