@@ -21,7 +21,7 @@ export default function Dashboard({ user }: { user: User }) {
   // Fetch from Local MongoDB server
   const fetchSessions = async () => {
     try {
-      const response = await fetch(`http://localhost:5000/api/sessions/${user.uid}`);
+      const response = await fetch(`http://localhost:3000/api/sessions/${user.uid}`);
       if (!response.ok) throw new Error('API error');
       const data = await response.json();
       setChats(data);
