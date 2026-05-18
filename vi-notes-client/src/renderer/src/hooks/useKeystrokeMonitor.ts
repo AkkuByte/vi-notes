@@ -24,7 +24,7 @@ export function useKeystrokeMonitor(sessionId?: string, userId?: string) {
       batch.current = []; // Clear immediately to avoid duplicates
 
       try {
-        await fetch('http://localhost:5000/api/telemetry', {
+        await fetch(`${import.meta.env.VITE_API_URL}/api/telemetry`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({

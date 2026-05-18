@@ -21,7 +21,7 @@ export default function Dashboard({ user }: { user: User }) {
   // Fetch from Local MongoDB server
   const fetchSessions = async () => {
     try {
-      const response = await fetch(`http://localhost:3000/api/sessions/${user.uid}`);
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/sessions/${user.uid}`);
       if (!response.ok) throw new Error('API error');
       const data = await response.json();
       setChats(data);
@@ -43,7 +43,7 @@ export default function Dashboard({ user }: { user: User }) {
   const createNewChat = async () => {
     setLoading(true);
     try {
-      const response = await fetch('http://localhost:5000/api/sessions', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/sessions`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ userId: user.uid, title: `Note ${chats.length + 1}` })

@@ -20,7 +20,7 @@ export default function Editor({ chatId, initialContent }: { chatId?: string, in
 
     const timeoutId = setTimeout(async () => {
       try {
-        await fetch(`http://localhost:5000/api/sessions/${chatId}`, {
+        await fetch(`${import.meta.env.VITE_API_URL}/api/sessions/${chatId}`, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ content: text })

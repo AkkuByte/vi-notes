@@ -12,8 +12,8 @@ app.use(express.json());
 
 // Connect to MongoDB Atlas
 mongoose.connect('mongodb+srv://akashkumar9973056437_db_user:jZfZRHHwqrSQAbWF@akku001.sgictum.mongodb.net/')
-  .then(() => console.log('✅ Connected to MongoDB Atlas'))
-  .catch(err => console.error('❌ MongoDB Atlas connection error:', err));
+  .then(() => console.log('Connected to MongoDB Atlas'))
+  .catch(err => console.error('MongoDB Atlas connection error:', err));
 
 // --- RESTful API Routes ---
 
@@ -92,5 +92,5 @@ app.post('/api/telemetry', async (req: Request, res: Response) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`🚀 Server running on http://localhost:${PORT}`);
+  console.log(`Server running on http://localhost:${PORT}`);
 });
